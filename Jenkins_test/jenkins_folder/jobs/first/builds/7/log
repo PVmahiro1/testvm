@@ -1,0 +1,33 @@
+Started by user [8mha:////4MUFTG21wufUS1wVxkGCIS9sgONGKjjZPD3HVhEqQX1pAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/first
+[first] $ /bin/sh -xe /tmp/jenkins9380829442296153811.sh
++ cd docker_tests
++ git pull
+Already up to date.
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ [ -n  -o -n  ]
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ VIRTUAL_ENV=/var/jenkins_home/workspace/first/docker_tests/venv
++ export VIRTUAL_ENV
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/first/docker_tests/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=$ 
++ PS1=(venv) $ 
++ export PS1
++ VIRTUAL_ENV_PROMPT=(venv) 
++ export VIRTUAL_ENV_PROMPT
++ [ -n  -o -n  ]
++ pip install -r requirements.txt
+/tmp/jenkins9380829442296153811.sh: 5: pip: not found
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE
