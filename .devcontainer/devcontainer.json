@@ -4,7 +4,7 @@
     "updateContentCommand": "",
     "postCreateCommand": "",
     "postAttachCommand": {
-        "server1": "npm start",
-        "server2": "gh codespace ports visibility 3000:public -c $CODESPACE_NAME\ngh codespace ports -c $CODESPACE_NAME"
+        "server1": "echo start",
+        "server2": "gh codespace ports -c $CODESPACE_NAME"
     }
 }
