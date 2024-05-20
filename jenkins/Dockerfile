@@ -3,19 +3,17 @@ FROM jenkins/jenkins
 ENV JENKINS_USER admin
 ENV JENKINS_PASS admin
 
-
 # Skip initial setup
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/plugins.txt
-COPY config.xml /usr/share/jenkins/ref/jobs/hello_world/config.xml
+COPY config.xml /usr/share/jenkins/ref/jobs/Lab_5/config.xml
 
 USER root
 # Create credentials
 COPY --chown=jenkins:jenkins credentials.groovy /usr/share/jenkins/ref/init.groovy.d/credentials.groovy
 COPY --chown=jenkins:jenkins startupTrigger.groovy /usr/share/jenkins/ref/init.groovy.d/startupTrigger.groovy
-COPY credentials-telegram.groovy /usr/share/jenkins/ref/init.groovy.d/credentials-telegram.groovy
-#COPY .env /usr/share/jenkins/ref/init.groovy.d/.env
+COPY credentials-telegram.groovy /usr/share/jenkins/credentials-telegram.groovy
 
 # Копіювання init.sh скрипта
 COPY init.sh /usr/share/jenkins/init.sh

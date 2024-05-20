@@ -22,10 +22,10 @@ try{
     println "Current Bot Token: ${xml.botToken}"
     println "Current Bot Name: ${xml.botName}"
     if((xml.botToken == newtelegramBotToken) || (xml.botName == newtelegramBotName)){
-        println "no change"
+        println "no change setting"
     }
     else{
-        println "change"
+        println "change setting"
     }
     
     xml.botToken.replaceNode { botToken(newtelegramBotToken) }
