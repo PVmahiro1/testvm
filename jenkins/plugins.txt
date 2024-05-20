@@ -4,3 +4,4 @@ docker-commons
 docker-workflow
 git
 prometheus
+telegram-notifications
