@@ -5,6 +5,7 @@ services:
     build: 
       context: ./jenkins/
       dockerfile: Dockerfile
+    user: root
     environment:
       TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
       TELEGRAM_BOT_NAME: ${TELEGRAM_BOT_NAME}

@@ -1,0 +1,80 @@
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Header.css">
+    <link rel="stylesheet" href="Footer.css">
+    <link rel="stylesheet" href="Content.css">
+    <title>Vulchak</title>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="Logo">
+            <img id="logo" src="./src/microcontroller_PNG31.png" alt="logo" />
+            <h1>VULCHAK</h1>
+        </div>
+        <nav class="nav__bar">
+            <a href="./index.html" class="nav__button">Home</a>
+            <a href="./Products.html" class="nav__button__active">Products</a>
+            <a href="./About_us.html" class="nav__button">About us</a>
+            <div onclick={toggle()} class="burger">
+                <div id="line1" class="line1"></div>
+                <div id="line2" class="line2"></div>
+                <div id="line3" class="line3"></div>
+            </div>
+            <div id="burger_nav" class="burger_nav">
+                <a href="./index.html" class="burger_nav__button">Home</a>
+                <a href="./Products.html" class="burger_nav__button__active">Products</a>
+                <a href="./About_us.html" class="burger_nav__button">About us</a>
+            </div>
+        </nav>
+    </div> 
+</header>
+<div class="Main_content">
+    <div class="Products">
+        <div class="Product-Items">
+            <img id="item__image" src="./src/ARDUINO_MEGA_A03.png" alt="" />
+            <p class="item__name">Arduino Mega</p>
+        </div>
+        <div class="Product-Text">
+        <p class="text_content_main">Specifications:</p>
+        <p class="text_content"><br>Microcontroller: ATmega2560<br>
+            Operating Voltage: 5V<br>
+            Input Voltage (recommended): 7-12V<br>
+            Input Voltage (limit): 6-20V<br>
+            Digital I/O Pins: 54 (of which 15 provide PWM output)<br>
+            PWM Digital I/O Pins: 15<br>
+            Analog Input Pins: 16<br>
+            DC Current per I/O Pin: 20 mA<br>
+            DC Current for 3.3V Pin: 50 mA<br>
+            Flash Memory: 256 KB of which 8 KB used by bootloader<br>
+            SRAM: 8 KB<br>
+            EEPROM: 4 KB<br>
+            Clock Speed: 16 MHz<br>
+            LED_BUILTIN: 13<br>
+            Length: 101.52 mm<br>
+            Width: 53.3 mm<br>
+            Weight: 37 g</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer_container"> 
+        <div class="Footer_image">
+            <a href="https://www.instagram.com/vulchakpavlo/" target="_blank"><img id="footer_image" src="./src/footer_instagram.png" alt="" /></a>
+            <a href="#" target="_blank"><img id="footer_image" src="./src/footer_viber.png" alt="" /></a>
+            <a href="https://t.me/VulchakPavlo" target="_blank"><img id="footer_image" src="./src/footer_telegram.png" alt="" /></a>
+        </div>
+        <nav class="footer_tel">Tel: +38 068 656 26 97</nav>
+    </div>
+</footer>
+<script src="./burger.js"></script>
+</body>
+</html>

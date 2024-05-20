@@ -1,0 +1,387 @@
+.Main_content{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: auto;
+  height: auto; 
+  padding-bottom: 160px;
+  z-index: -2;
+}
+.Home_Products {
+  display: flex;
+  height: 100%;
+  width: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: rgba(41, 46, 54, 0.85);
+  transform: translate(0, 80px);
+  color: white;
+  border-radius: 20px;
+  padding: 20px 20px 20px 20px;
+}
+.Products{
+  display: flex;
+  height: 100%;
+  width: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: rgba(41, 46, 54, 0.85);
+  transform: translate(0, 80px);
+  color: white;
+  border-radius: 20px;
+  padding:20px 20px 20px 20px;
+}
+.Products_Table{
+  display: flex;
+  height: 100%;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(41, 46, 54, 0.85);
+  transform: translate(0, 80px);
+  color: white;
+  border-radius: 20px;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+
+.Info_Product{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.Products_Items{
+	display: flex;
+  height: 100%;
+  width: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding:20px 20px 20px 20px;
+  color: #6acef7;
+  font-size: 30px;
+  text-align: center;
+}
+.items,
+.items_text,
+.Info_About_As,
+.Products_items,
+.Product-Text,
+.Product-Items{
+  padding-top: 10px;
+  width: 45%;
+  height: auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Product-Text{
+	width: 48vw;
+}
+.Product-Items{
+	width: 35%;
+}
+.items{
+	width: 29%;
+}
+.items_text{
+	width: 48vw;
+}
+.Info_About_As{
+	width: 100%;
+}
+.Products_items{
+	width: 25%;
+}
+#item__image {
+  width: 100%;
+}
+.item__name{
+  color: #6ACEF7;
+  font-size: 30px;
+  text-align: center;
+}
+.text_content{
+  display: flex;
+  font-size: 24px;
+  color: white;
+  margin: 0 10px;
+}
+.text_content_main{
+	display: flex;
+  font-size: 36px;
+  color: #6ACEF7;
+  margin: 0 10px;
+}
+
+/* Contact Form */
+#Contact_Form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#Contact_Form > h2 {
+  color: #6acef7;
+}
+#Contact_Form > input {
+  width: 80%;
+  height: 40px;
+  outline: none;
+  border: none;
+  padding: 0 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+#Contact_Form > input:focus {
+  width: 90%;
+  background-color: #d8f2fc;
+}
+#Contact_Form > textarea {
+  width: 80%;
+  outline: none;
+  border: none;
+  padding: 5px 15px;
+  font-size: 16px;
+  border-radius: 15px;
+}
+#Submit_Button {
+  max-width: 80px;
+  margin: 15px;
+  color: black;
+  background-color: #6acef7;
+}
+#Submit_Button:hover {
+  background: chartreuse;
+}
+/* Contact Form END */
+
+/* Loading Bar */
+.FakeLoading {
+  position: fixed;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: Dissapear;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.LoadingBar {
+  background-color: black;
+  animation: Dissapear_Loading;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.LoadingLine {
+  border-radius: 20px;
+  animation: Loading;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  background-color: chartreuse;
+}
+@keyframes Loading {
+  0% {
+    width: 40px;
+    height: 40px;
+  }
+  80% {
+    width: 301px;
+    height: 40px;
+  }
+  90% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes Dissapear {
+  0% {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: -10;
+  }
+}
+@keyframes Dissapear_Loading {
+  0% {
+    border: 3px solid #6acff7bb;
+    border-radius: 26px;
+    width: 300px;
+    height: 40px;
+  }
+  80% {
+    border: 3px solid #6acff7bb;
+    border-radius: 26px;
+    width: 300px;
+    height: 40px;
+  }
+  90% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* Loading Bar END*/
+
+/* Table */
+#Arduino {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  min-width: 320px;
+  margin: 20px;
+}
+
+#Arduino td,
+#Arduino th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#Arduino tr {
+  background-color: #f2f2f2;
+}
+
+#Arduino tr:hover {
+  background-color: #ddd;
+}
+
+#Arduino th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #6acef7;
+  color: black;
+}
+/* Table END */
+
+@media(max-width: 1150px)
+{
+	.Products_items{
+	    width: 30%;
+    }
+    .item__name{
+    	font-size: 3vw;
+    }
+    .items{
+    	width: 35%;
+    }
+    .text_content{
+    	font-size: 2vw;
+    }
+    .text_content_main{
+    	font-size: 3vw;
+    }
+}
+@media(max-width: 700px)
+{
+	.Products_items{
+	  width: 55%;
+  }
+  .Products,
+  .Products_Table{
+  	flex-direction: column;
+  	align-items: center;
+  }
+  .item__name{
+  	font-size: 7vw;
+  }
+  .items{
+  	width: 50%;
+  }
+	.item__name{
+		font-size: 5vw;
+	}
+	.Product-Items{
+		width: 40%;
+	}
+  #Arduino {
+    margin: 20px 0px 20px 0px;
+    min-width: 80%;
+  }
+}
+@media(max-width: 550px)
+{
+	.nav__bar {
+		flex-direction: column;
+		align-content: flex-start;
+	}
+	.nav__button,.nav__button__active {
+		font-size: 18px;
+	}
+	.Product-Text{
+		width: 75vw;
+		align-items: center;
+	}
+	.Product-Items{
+		width: 50%;
+	}
+	.text_content{
+		font-size: 12px;
+	}
+	.item__name{
+		font-size: 6vw;
+	}
+	.text_content_main{
+		font-size: 4vw;
+	}
+	h1{
+		font-size: 24px;
+	}
+	.Info_Product{
+		flex-direction: column;
+		align-items: center;
+	}
+}
+@media(max-width: 450px)
+{
+	.Products_items{
+	  width: 80%;
+  }
+  .item__name{
+  	font-size: 7vw;
+    }
+  .Product-Items{
+		width: 60%;
+	}
+	.text_content_main{
+		font-size: 6vw;
+	}
+  #Arduino {
+    margin: 20px 0px 20px 0px;
+    min-width: 90%;
+  }
+  #Arduino td,
+  #Arduino th {
+    font-size: 10px;
+    padding: 4px;
+  }
+}
