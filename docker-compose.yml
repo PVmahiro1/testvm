@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins_master
+    build: 
+      context: ./jenkins/
+      dockerfile: Dockerfile
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TELEGRAM_BOT_NAME: ${TELEGRAM_BOT_NAME}
+      DOCKERHUB_USERNAME: ${DOCKERHUB_USERNAME}
+      DOCKERHUB_PASSWORD: ${DOCKERHUB_PASSWORD}
+    restart: always
+    ports:
+      - 50000:50000
+      - 8080:8080
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - back-tier
+
+volumes:
+    jenkins_data: {}
+
+networks:
+  back-tier:
