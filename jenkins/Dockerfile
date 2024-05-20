@@ -13,7 +13,7 @@ USER root
 # Create credentials
 COPY --chown=jenkins:jenkins credentials.groovy /usr/share/jenkins/ref/init.groovy.d/credentials.groovy
 COPY --chown=jenkins:jenkins startupTrigger.groovy /usr/share/jenkins/ref/init.groovy.d/startupTrigger.groovy
-COPY credentials-telegram.groovy /usr/share/jenkins/credentials-telegram.groovy
+COPY credentials-telegram.groovy /usr/share/jenkins/ref/init.groovy.d/credentials-telegram.groovy
 
 # Копіювання init.sh скрипта
 COPY init.sh /usr/share/jenkins/init.sh
