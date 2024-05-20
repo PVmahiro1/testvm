@@ -22,8 +22,84 @@ services:
     networks:
       - back-tier
 
+  prometheus:
+    image: docker.io/prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    expose:
+      - 9090
+    command: 
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus-data:/prometheus
+    restart: unless-stopped
+    networks:
+      - back-tier
+
+  grafana:
+    image: docker.io/grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    env_file:
+      - ./grafana/config.monitoring
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    networks:
+      - back-tier
+
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    command: 
+      - '--path.procfs=/host/proc' 
+      - '--path.sysfs=/host/sys'
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - back-tier
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 8090:8090
+    command:
+      - '-port=8090'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    privileged: true
+    restart: unless-stopped
+    networks:
+      - back-tier
+
 volumes:
     jenkins_data: {}
+    prometheus-data: {}
+    grafana-data: {}
 
 networks:
   back-tier:
