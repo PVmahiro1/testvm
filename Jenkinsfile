@@ -72,15 +72,13 @@ pipeline {
     }
 
     post {
-        environment {
-            MESSAGE_TG = 'Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}'
-        }
-
         success {
-
             script {
                 // Send Telegram notification on success
-                telegramSend message: "$MESSAGE_TG"
+                // Створюємо змінні середовища
+                def message = "Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}"
+                // Надсилаємо повідомлення в Telegram
+                telegramSend message: message
             }
         }
     }
