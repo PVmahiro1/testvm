@@ -3,6 +3,7 @@ pipeline {
     
     environment {
         DOCKER_IMAGE = 'vulchakpavlo/prikm'
+        TG_BOT_TOKEN =  credentials('tg_bot_token')
     }
     
     stages {
@@ -16,6 +17,7 @@ pipeline {
             steps {
                 dir("Telegrambot") {
                     sh "pwd"
+                    sh 'export TG_BOT_TOKEN=$TG_BOT_TOKEN' 
                     sh 'docker-compose build'
                     sh 'docker tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:$BUILD_NUMBER'
                 }
