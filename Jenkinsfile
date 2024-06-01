@@ -75,8 +75,8 @@ pipeline {
         success {
             script {
                 // Send Telegram notification on success
-                sh "${JOB_NAME}"
-                telegramSend message: "Job Name: \n Branch: \nBuild #: ${currentBuild.currentResult}"
+                sh "echo ${JOB_NAME}"
+                telegramSend message: "Job Name: $DOCKER_IMAGE\n Branch: \nBuild #: ${currentBuild.currentResult}"
             }
         }
     }
