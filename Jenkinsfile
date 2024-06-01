@@ -24,7 +24,7 @@ pipeline {
                 failure {
                     script {
                     // Send Telegram notification on success
-                        telegramSend message: "Job Name: JOB_NAME Branch: Build #: Failure stage:"
+                        telegramSend message: "Job Name: ${env.JOB_NAME}\n Branch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}\n Failure stage: '${env.STAGE_NAME}'"
                     }
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
                 failure {
                     script {
                     // Send Telegram notification on success
-                        telegramSend message: "Job Name: JOB_NAME Branch: Build #:"
+                        telegramSend message: "Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}\nFailure stage: '${env.STAGE_NAME}'"
                     }
                 }
             }
@@ -64,7 +64,7 @@ pipeline {
                 failure {
                     script {
                     // Send Telegram notification on success
-                        telegramSend message: "Job Name: JOB_NAME Branch: Build #:"
+                        telegramSend message: "Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}\nFailure stage: '${env.STAGE_NAME}'"
                     }
                 }
             }
@@ -75,10 +75,7 @@ pipeline {
         success {
             script {
                 // Send Telegram notification on success
-                // Створюємо змінні середовища
-                def message = "Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}"
-                // Надсилаємо повідомлення в Telegram
-                telegramSend message: message
+                telegramSend message: "Job Name: ${env.JOB_NAME}\n Branch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}"
             }
         }
     }
