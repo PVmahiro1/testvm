@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  statsholiday:
+    image: vulchakpavlo/prikm:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #env_file:
+     # ./.env
+    container_name: stats_holiday_bot
+    #environment:
+    #  TG_BOT_TOKEN: $TG_BOT_TOKEN
+    networks:
+      - back-tier
+
+networks:
+  back-tier:

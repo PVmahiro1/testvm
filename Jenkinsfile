@@ -14,9 +14,11 @@ pipeline {
 
         stage('Image build') {
             steps {
-                sh "docker build -t prikm:latest ."
-                sh "docker tag prikm $DOCKER_IMAGE:latest"
-                sh "docker tag prikm $DOCKER_IMAGE:$BUILD_NUMBER"
+                dir("Telegrambot") {
+                    sh "pwd"
+                    sh 'docker-compose build'
+                    sh 'docker tag $DOCKER_IMAGE:latest $DOCKER_IMAGE:$BUILD_NUMBER'
+                }
             }
             post{
                 failure {
@@ -49,11 +51,14 @@ pipeline {
 
         stage('Deploy image'){
             steps{
-                sh "docker stop \$(docker ps | grep '$DOCKER_IMAGE' | awk '{print \$1}') || true"
-                sh "docker container prune --force"
-                sh "docker image prune --force"
-                //sh "docker rmi \$(docker images -q) || true"
-                sh "docker run -d -p 80:80 $DOCKER_IMAGE"
+                dir("Telegrambot") {
+                    sh "pwd"
+                    sh "docker-compose down"
+                    sh "docker container prune --force"
+                    sh "docker image prune --force"
+                    //sh "docker rmi \$(docker images -q) || true"
+                    sh "docker-compose up -d"
+                }
             }
             post{
                 failure {
