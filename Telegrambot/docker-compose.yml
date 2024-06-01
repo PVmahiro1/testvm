@@ -8,5 +8,5 @@ services:
     #env_file:
      # ./.env
     container_name: stats_holiday_bot
-    #environment:
-    #  TG_BOT_TOKEN: $TG_BOT_TOKEN
+    environment:
+      TG_BOT_TOKEN: $TG_BOT_TOKEN
