@@ -9,11 +9,7 @@ pipeline {
             } 
         }
         
-        stage('Image Build') {
-            steps {
-                sh "docker-compose build mqtt2prometheus mosquitto prometheus_mqtt grafana_mqtt node_exporter_mqtt" 
-            } 
-        }
+
         stage('Stop previous artifact'){
 		    steps {
                 sh "docker-compose down mqtt2prometheus mosquitto prometheus_mqtt grafana_mqtt node_exporter_mqtt"
