@@ -1,77 +1,31 @@
 pipeline {
     agent any
-    
-    environment {
-        DOCKER_IMAGE = 'vulchakpavlo/prikm'
-    }
+	
     
     stages {
         stage('Start') {
             steps {
-                echo 'Lab_5: start for monitoring'
-            }
+                echo 'Lab_2: nginx/custom'
+            } 
         }
-
-        stage('Image build') {
+        
+        stage('Image Build') {
             steps {
-                sh "docker build -t prikm:latest ."
-                sh "docker tag prikm $DOCKER_IMAGE:latest"
-                sh "docker tag prikm $DOCKER_IMAGE:$BUILD_NUMBER"
-            }
-            post{
-                failure {
-                    script {
-                    // Send Telegram notification on success
-                        telegramSend message: "Job Name: ${env.JOB_NAME}\n Branch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}\n Failure stage: '${env.STAGE_NAME}'"
-                    }
-                }
-            }
-            
+                sh "docker-compose build mqtt2prometheus mosquitto prometheus_mqtt grafana_mqtt node_exporter_mqtt" 
+            } 
         }
-
-        stage('Push to registry') {
-            steps {
-                withDockerRegistry([ credentialsId: "dockerhub_token", url: "" ])
-                {
-                    sh "docker push $DOCKER_IMAGE:latest"
-                    sh "docker push $DOCKER_IMAGE:$BUILD_NUMBER"
-                }
-            }
-            post{
-                failure {
-                    script {
-                    // Send Telegram notification on success
-                        telegramSend message: "Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}\nFailure stage: '${env.STAGE_NAME}'"
-                    }
-                }
-            }
-        }
-
-        stage('Deploy image'){
+        stage('Stop previous artifact'){
+		    steps {
+                sh "docker-compose down mqtt2prometheus mosquitto prometheus_mqtt grafana_mqtt node_exporter_mqtt"
+            } 
+		}
+        stage('Deploy new artifact'){
             steps{
-                sh "docker stop \$(docker ps | grep '$DOCKER_IMAGE' | awk '{print \$1}') || true"
-                sh "docker container prune --force"
-                sh "docker image prune --force"
-                //sh "docker rmi \$(docker images -q) || true"
-                sh "docker run -d -p 80:80 $DOCKER_IMAGE"
-            }
-            post{
-                failure {
-                    script {
-                    // Send Telegram notification on success
-                        telegramSend message: "Job Name: ${env.JOB_NAME}\nBranch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}\nFailure stage: '${env.STAGE_NAME}'"
-                    }
-                }
-            }
-        }
-    }
+                sh "docker-compose up -d --build mqtt2prometheus mosquitto prometheus_mqtt grafana_mqtt node_exporter_mqtt"
+            } 
+        } 
 
-    post {
-        success {
-            script {
-                // Send Telegram notification on success
-                telegramSend message: "Job Name: ${env.JOB_NAME}\n Branch: ${env.GIT_BRANCH}\nBuild #${env.BUILD_NUMBER}: ${currentBuild.currentResult}"
-            }
-        }
-    }
+        
+    } 
+
 }
