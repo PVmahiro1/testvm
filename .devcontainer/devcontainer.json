@@ -3,7 +3,7 @@
     "waitFor": "onCreateCommand",
     "hostRequirements": {
         "cpus": 2,
-        "storage": "128gb"
+        "storage": "32gb"
     },
     "updateContentCommand": "",
     "postCreateCommand": "",
